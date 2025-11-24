@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ---------------- GLOBAL ---------------- */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -24,7 +23,6 @@ body {
   margin: auto;
 }
 
-/* ---------------- HEADER ---------------- */
 header {
   width: 100%;
   background: #fff;
@@ -41,9 +39,7 @@ header {
   padding: 15px 40px;
 }
 
-.logo {
-  height: 60px;
-}
+.logo { height: 60px; }
 
 .partner-btn {
   display: inline-flex;
@@ -62,10 +58,7 @@ header {
   transition: 0.25s ease;
 }
 
-.partner-btn i {
-  animation: flame 1s infinite ease-in-out;
-  color: white;
-}
+.partner-btn i { animation: flame 1s infinite ease-in-out; color: white; }
 
 .partner-btn:hover {
   transform: translateY(-3px);
@@ -79,26 +72,15 @@ header {
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* ---------------- HERO ---------------- */
 .hero {
   text-align: left;
   padding: 100px 25px;
   background: #fafafa;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  font-weight: 900;
-}
+.hero h1 { font-size: 3rem; margin-bottom: 15px; font-weight: 900; }
+.hero p { font-size: 1.25rem; max-width: 700px; opacity: 0.75; }
 
-.hero p {
-  font-size: 1.25rem;
-  max-width: 700px;
-  opacity: 0.75;
-}
-
-/* ---------------- CODE INPUT ---------------- */
 .code-section {
   text-align: center;
   padding: 80px 20px;
@@ -117,9 +99,7 @@ header {
   text-align: center;
 }
 
-.code-input:focus {
-  box-shadow: 0 6px 22px rgba(255,81,0,0.6);
-}
+.code-input:focus { box-shadow: 0 6px 22px rgba(255,81,0,0.6); }
 
 .check-btn {
   display: inline-flex;
@@ -138,10 +118,7 @@ header {
   transition: 0.25s ease;
 }
 
-.check-btn i {
-  animation: flame 1s infinite ease-in-out;
-  color: white;
-}
+.check-btn i { animation: flame 1s infinite ease-in-out; color: white; }
 
 .check-btn:hover {
   transform: translateY(-3px);
@@ -159,7 +136,6 @@ header {
   gap: 10px;
 }
 
-/* ---------------- FOOTER ---------------- */
 footer {
   background: #111;
   color: white;
@@ -175,9 +151,7 @@ footer {
   transition: 0.3s;
 }
 
-.footer-icons a:hover {
-  color: #ff6b00;
-}
+.footer-icons a:hover { color: #ff6b00; }
 </style>
 </head>
 
@@ -187,8 +161,7 @@ footer {
   <div class="container topbar">
     <a href="/"><img src="/curtc_logo.png" alt="Clean Up RTC Logo" class="logo"></a>
     <a href="/partner" class="partner-btn">
-      <i class="fa-solid fa-fire"></i>
-      Partner Program
+      <i class="fa-solid fa-fire"></i> Partner Program
     </a>
   </div>
 </header>
@@ -196,7 +169,7 @@ footer {
 <section class="hero">
   <div class="container">
     <h1>Check a code</h1>
-    <p>Check if a code is valid to redeem in-game.</p>
+    <p>Enter your code and click check to see if it’s valid.</p>
   </div>
 </section>
 
@@ -219,13 +192,14 @@ footer {
 
 <script>
 const jsonURL = "https://raw.githubusercontent.com/2codeDev/curtc/refs/heads/main/codes-list.json";
-const input = document.getElementById("codeInput");
-const resultDiv = document.getElementById("result");
 
-input.addEventListener("input", async () => {
+async function checkCode() {
+  const input = document.getElementById("codeInput");
+  const resultDiv = document.getElementById("result");
   const code = input.value.trim();
+
   if(!code) {
-    resultDiv.innerHTML = "";
+    resultDiv.innerHTML = '';
     return;
   }
 
@@ -236,20 +210,16 @@ input.addEventListener("input", async () => {
 
     const found = codes.find(c => c.code === code);
     if(found && found.valid === true) {
-      resultDiv.innerHTML = '<i class="fa-solid fa-check" style="color:green"></i> Valid';
+      resultDiv.innerHTML = '<i class="fa-solid fa-check" style="color:green"></i> Valid code';
     } else {
-      // Code not in list or valid=false
       resultDiv.innerHTML = '<i class="fa-solid fa-xmark" style="color:red"></i> Invalid code';
     }
-
   } catch(err) {
     console.error(err);
     resultDiv.innerHTML = '<i class="fa-solid fa-xmark" style="color:red"></i> Error checking code';
   }
-});
+}
 </script>
-</script>
-
 
 </body>
 </html>
