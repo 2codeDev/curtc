@@ -1,0 +1,5 @@
+[
+  {"code": "code123", "valid": true},
+  {"code": "code124", "valid": false},
+  {"code": "code125", "valid": true}
+]
