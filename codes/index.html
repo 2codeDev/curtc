@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clean Up RTC | Code Checker</title>
+<title>Clean Up RTC | Codes</title>
 <link rel="icon" type="image/png" href="/favicon.png" />
 
 <!-- Font Awesome -->
@@ -219,33 +219,35 @@ footer {
 
 <script>
 const jsonURL = "https://raw.githubusercontent.com/2codeDev/curtc/refs/heads/main/codes-list.json";
+const input = document.getElementById("codeInput");
+const resultDiv = document.getElementById("result");
 
-async function checkCode() {
-    const input = document.getElementById("codeInput").value.trim();
-    const resultDiv = document.getElementById("result");
+input.addEventListener("input", async () => {
+  const code = input.value.trim();
+  if(!code) {
+    resultDiv.innerHTML = "";
+    return;
+  }
 
-    try {
-        const response = await fetch(jsonURL);
-        if (!response.ok) throw new Error("Could not fetch codes");
-        const codes = await response.json(); // array of objects: [{code:"code123", valid:true}, ...]
+  try {
+    const response = await fetch(jsonURL);
+    if(!response.ok) throw new Error("Failed to fetch codes");
+    const codes = await response.json();
 
-        const found = codes.find(c => c.code === input);
-
-        if (found) {
-            if (found.valid) {
-                resultDiv.innerHTML = '<i class="fa-solid fa-check" style="color:green"></i> Valid Code';
-            } else {
-                resultDiv.innerHTML = '<i class="fa-solid fa-x" style="color:red"></i> Invalid Code';
-            }
-        } else {
-            resultDiv.innerHTML = '<i class="fa-solid fa-x" style="color:red"></i> Code not found';
-        }
-
-    } catch (err) {
-        resultDiv.innerHTML = '<i class="fa-solid fa-x" style="color:red"></i> Error loading codes';
-        console.error(err);
+    const found = codes.find(c => c.code === code);
+    if(found && found.valid === true) {
+      resultDiv.innerHTML = '<i class="fa-solid fa-check" style="color:green"></i> Valid';
+    } else {
+      // Code not in list or valid=false
+      resultDiv.innerHTML = '<i class="fa-solid fa-xmark" style="color:red"></i> Invalid code';
     }
-}
+
+  } catch(err) {
+    console.error(err);
+    resultDiv.innerHTML = '<i class="fa-solid fa-xmark" style="color:red"></i> Error checking code';
+  }
+});
+</script>
 </script>
 
 
