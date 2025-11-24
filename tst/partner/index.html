@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Up RTC | Partner Program</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #0c0c0d;
+        color: white;
+        overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+        width: 100%;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        background: rgba(10,10,10,0.85);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+    }
+
+    header img {
+        height: 55px;
+        user-select: none;
+    }
+
+    nav a {
+        margin-left: 28px;
+        text-decoration: none;
+        font-size: 16px;
+        color: #dcdcdc;
+        transition: 0.2s ease;
+    }
+
+    nav a:hover {
+        color: white;
+    }
+
+    /* Page Hero */
+    .hero {
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        opacity: 0.8;
+    }
+
+    /* Partner Card */
+    .card {
+        max-width: 600px;
+        margin: 40px auto;
+        background: #161618;
+        padding: 40px;
+        border-radius: 18px;
+        box-shadow: 0 0 25px rgba(0,0,0,0.35);
+        text-align: center;
+        animation: fadeIn 0.6s ease forwards;
+    }
+
+    .card i {
+        font-size: 55px;
+        margin-bottom: 20px;
+        color: #ffae44;
+    }
+
+    .card h2 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        font-size: 17px;
+        opacity: 0.8;
+        line-height: 1.6;
+    }
+
+    /* Gradient Partner Button */
+    .partner-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 35px;
+        margin-top: 25px;
+        font-size: 20px;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(90deg, #ff7a00, #ffae00);
+        border-radius: 14px;
+        text-decoration: none;
+        transition: 0.2s ease;
+        box-shadow: 0 6px 18px rgba(255,140,0,0.4);
+        animation: flamePulse 1.5s infinite ease-in-out;
+    }
+
+    .partner-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 22px rgba(255,140,0,0.6);
+        filter: brightness(1.12);
+    }
+
+    .partner-btn i {
+        font-size: 22px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes flamePulse {
+        0%, 100% { filter: brightness(1); }
+        50% { filter: brightness(1.15); }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+        .hero h1 { font-size: 34px; }
+        .card { margin: 20px; padding: 30px; }
+        .partner-btn { width: 100%; justify-content: center; }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo.png" alt="Logo">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#features">Features</a>
+        <a href="#media">Media</a>
+        <a href="#social">Social</a>
+        <a href="partner.html" style="color: #ffae44; font-weight: 700;">Partner</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Partner Program</h1>
+    <p>Apply to join our official partner team.</p>
+</section>
+
+<div class="card">
+    <i class="fa-solid fa-fire"></i>
+    <h2>Become a Partner</h2>
+    <p>
+        Join our partnership program and gain exclusive benefits, early previews, special roles,  
+        and priority communication. We review every submission carefully.
+    </p>
+
+    <!-- Replace Google Form URL below -->
+    <a class="partner-btn" href="https://docs.google.com/forms/" target="_blank">
+        <i class="fa-solid fa-fire"></i>
+        Partner Program
+    </a>
+</div>
+
+</body>
+</html>
