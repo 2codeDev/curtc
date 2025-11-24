@@ -1,353 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clean Up RTC</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Up RTC</title>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    /* ------------------------ GLOBAL ------------------------ */
+<style>
     body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #fff;
-      color: #111;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #ffffff;
+        color: #111;
+        overflow-x: hidden;
     }
 
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    h2 {
-      font-weight: 800;
-      text-align: center;
-    }
-
-    /* ------------------------ HEADER ------------------------ */
+    /* HEADER */
     header {
-      width: 100%;
-      background: #fff;
-      border-bottom: 1px solid #ececec;
-      padding: 16px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 2px solid #eee;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
     }
 
-    header .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header img.logo {
-      height: 55px;
+    header img {
+        height: 55px;
+        object-fit: contain;
     }
 
     nav a {
-      margin-left: 22px;
-      font-weight: 600;
-      color: #222;
-      text-decoration: none;
-      transition: .2s;
+        margin-left: 25px;
+        text-decoration: none;
+        color: #111;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: 0.3s;
     }
 
     nav a:hover {
-      color: #ff6600;
+        color: #ff6b00;
     }
 
-    /* ------------------------ PARTNER BUTTON ------------------------ */
+    /* PARTNER BUTTON */
     .partner-btn {
-      padding: 10px 20px;
-      background: linear-gradient(45deg, #ff8800, #ff5500);
-      border-radius: 50px;
-      color: white;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      border: none;
-      cursor: pointer;
-      animation: flamePulse 2s infinite ease-in-out;
-      transition: 0.25s ease;
-      white-space: nowrap;
-    }
-
-    .partner-btn:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 15px rgba(255, 120, 0, 0.5);
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(90deg, #ff8a00, #ff5100);
+        padding: 12px 22px;
+        border-radius: 12px;
+        color: white !important;
+        font-weight: 700;
+        margin-left: 25px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0px 4px 12px rgba(255, 81, 0, 0.4);
     }
 
     .partner-btn i {
-      animation: flicker 1s infinite alternate ease-in-out;
+        margin-right: 10px;
+        color: white;
+        animation: flame 1s infinite ease-in-out;
     }
 
-    @keyframes flamePulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
+    @keyframes flame {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.8; }
+        100% { transform: scale(1); opacity: 1; }
     }
 
-    @keyframes flicker {
-      0% { opacity: .8; transform: rotate(0); }
-      100% { opacity: 1; transform: rotate(5deg); }
+    .partner-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0px 6px 18px rgba(255, 81, 0, 0.6);
+        color: #fff !important;
     }
 
-    /* ------------------------ HERO ------------------------ */
+    .partner-btn:hover i {
+        color: white;
+    }
+
+    /* HERO */
     .hero {
-      text-align: center;
-      padding: 110px 20px;
-      background: #fafafa;
+        text-align: center;
+        padding: 100px 20px;
     }
 
-    .hero h2 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+        font-weight: 900;
     }
 
     .hero p {
-      font-size: 1.1rem;
-      color: #555;
-      max-width: 700px;
-      margin: auto;
+        font-size: 1.3rem;
+        max-width: 700px;
+        margin: 0 auto;
+        opacity: 0.7;
     }
 
-    /* ------------------------ SECTIONS ------------------------ */
-    section {
-      padding: 80px 0;
+    /* CARD GRID */
+    .card-section {
+        padding: 70px 40px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        max-width: 1300px;
+        margin: auto;
     }
 
-    /* ------------------------ FEATURES ------------------------ */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
+    .card {
+        background: #ffffff;
+        padding: 35px 25px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: 0.25s ease;
+        transform-style: preserve-3d;
     }
 
-    .feature-card {
-      background: #fff;
-      padding: 30px 25px;
-      border: 1px solid #e5e5e5;
-      border-radius: 14px;
-      text-align: center;
-      transition: .3s ease;
-
-      /* ICON + TEXT PERFECT CENTER */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-
-      height: 100%;
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.12);
     }
 
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+    .card i {
+        font-size: 48px;
+        color: #ff6b00;
+        margin-bottom: 20px;
     }
 
-    .feature-card i {
-      font-size: 42px;
-      margin-bottom: 18px;
-      color: #ff6600;
-      display: block;
+    .card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        font-weight: 700;
     }
 
-    /* ------------------------ MEDIA ------------------------ */
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
+    .card p {
+        font-size: 1rem;
+        opacity: 0.8;
+        line-height: 1.5;
     }
 
-    .media-grid img,
-    .media-grid video {
-      width: 100%;
-      border-radius: 12px;
-      border: 2px solid #e5e5e5;
-    }
-
-    /* ------------------------ SOCIAL POSTS ------------------------ */
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
-    }
-
-    .post {
-      padding: 25px;
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
-      transition: .2s;
-      text-align: center;
-    }
-
-    .post:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-    }
-
-    /* ------------------------ FOOTER ------------------------ */
+    /* FOOTER */
     footer {
-      text-align: center;
-      padding: 45px 0;
-      background: #fafafa;
-      border-top: 1px solid #ececec;
-      margin-top: 80px;
+        background: #111;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
     }
 
-    footer .footer-links a {
-      margin: 0 12px;
-      color: #222;
-      font-weight: 600;
-      transition: .2s;
+    .footer-icons a {
+        color: white;
+        margin: 0 10px;
+        font-size: 1.4rem;
+        transition: 0.3s;
     }
 
-    footer .footer-links a:hover {
-      color: #ff6600;
+    .footer-icons a:hover {
+        color: #ff6b00;
     }
-
-    /* ------------------------ MOBILE ------------------------ */
-    @media (max-width: 700px) {
-      header .top {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      nav a {
-        margin-left: 12px;
-        font-size: 0.95rem;
-      }
-
-      .partner-btn {
-        padding: 9px 18px;
-        font-size: 0.9rem;
-      }
-
-      .hero h2 {
-        font-size: 2.2rem;
-      }
-    }
-  </style>
+</style>
 </head>
-
 <body>
 
 <header>
-  <div class="container top">
-    <img src="logo.png" class="logo" alt="Clean Up RTC Logo">
+    <img src="YOUR_LOGO_HERE.png" alt="Clean Up RTC Logo">
 
     <nav>
-      <a href="#about">About</a>
-      <a href="#features">Features</a>
-      <a href="#media">Media</a>
-      <a href="#social">Social</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#media">Media</a>
+        <a href="#social">Social</a>
 
-      <a href="/partner" class="partner-btn">
-        <i class="fa-solid fa-fire"></i>
-        Partner Program
-      </a>
+        <a class="partner-btn" href="partner.html">
+            <i class="fa-solid fa-fire"></i>
+            Partner Program
+        </a>
     </nav>
-  </div>
 </header>
 
 <section class="hero">
-  <div class="container">
-    <h2>Clean Up the Roblox Twitter Community</h2>
-    <p>Use your hyperlaser to choose who stays and who gets cleaned up.</p>
-  </div>
+    <h1>Clean Up RTC</h1>
+    <p>The ultimate Roblox experience where you clean up the chaotic Roblox Twitter Community using a hyperlaser.</p>
 </section>
 
-<section id="about">
-  <div class="container">
-    <h2>About the Game</h2>
-    <p style="text-align:center; max-width:800px; margin:auto; color:#555;">
-      Clean Up RTC lets you decide the fate of Roblox Twitter Community members with
-      smooth mechanics, polished visuals, and hilarious reactions.
-    </p>
-  </div>
-</section>
+<section class="card-section" id="features">
+    <div class="card">
+        <i class="fa-solid fa-gun"></i>
+        <h3>Hyperlaser Combat</h3>
+        <p>Blast RTC members using the legendary hyperlaser in a fast-paced comedic arena.</p>
+    </div>
 
-<section id="features">
-  <div class="container">
-    <h2>Game Features</h2>
-
-    <div class="feature-grid">
-      <div class="feature-card">
-        <i class="fa-solid fa-bolt"></i>
-        High-precision hyperlaser effects.
-      </div>
-
-      <div class="feature-card">
+    <div class="card">
         <i class="fa-solid fa-users"></i>
-        Dozens of RTC personalities updated often.
-      </div>
-
-      <div class="feature-card">
-        <i class="fa-solid fa-music"></i>
-        Fun reactions and sound effects.
-      </div>
-
-      <div class="feature-card">
-        <i class="fa-solid fa-mobile-screen"></i>
-        Runs great on all devices.
-      </div>
-
-      <div class="feature-card">
-        <i class="fa-solid fa-circle-check"></i>
-        Creator-friendly content.
-      </div>
-
-      <div class="feature-card">
-        <i class="fa-solid fa-rotate"></i>
-        Frequent roster updates.
-      </div>
+        <h3>Community Targets</h3>
+        <p>Choose who you want to “clean” from the Roblox Twitter Community.</p>
     </div>
-  </div>
-</section>
 
-<section id="media">
-  <div class="container">
-    <h2>Media Showcase</h2>
-
-    <div class="media-grid">
-      <img src="image1.png" alt="">
-      <img src="image2.png" alt="">
-      <video controls src="video1.mp4"></video>
-      <video controls src="video2.mp4"></video>
+    <div class="card">
+        <i class="fa-solid fa-video"></i>
+        <h3>Media Showcase</h3>
+        <p>Watch gameplay clips, screenshots, and creator videos from the community.</p>
     </div>
-  </div>
-</section>
 
-<section id="social">
-  <div class="container">
-    <h2>Social Highlights</h2>
-
-    <div class="social-grid">
-      <div class="post">Example social post screenshot.</div>
-      <div class="post">Community reactions and memes.</div>
-      <div class="post">Creator highlights & more.</div>
+    <div class="card">
+        <i class="fa-solid fa-bolt"></i>
+        <h3>Fast-Paced Chaos</h3>
+        <p>A nonstop comedic shooter built for creators, players, and chaos enthusiasts.</p>
     </div>
-  </div>
 </section>
 
 <footer>
-  <p>Connect With Us</p>
-  <div class="footer-links">
-    <a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a>
-    <a href="#"><i class="fa-brands fa-youtube"></i> YouTube</a>
-    <a href="#"><i class="fa-brands fa-discord"></i> Discord</a>
-    <a href="#"><i class="fa-solid fa-people-group"></i> Roblox Group</a>
-  </div>
+    <p>© 2025 Clean Up RTC</p>
+    <div class="footer-icons">
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+    </div>
 </footer>
 
 </body>
