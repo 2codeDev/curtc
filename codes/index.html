@@ -218,19 +218,36 @@ footer {
 </footer>
 
 <script>
-// Example JSON data with valid codes
-const validCodes = ["PARTNER123", "EXCLUSIVE2025", "CREATOR50"];
+const jsonURL = "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/codes.json";
 
-function checkCode() {
-  const input = document.getElementById("codeInput").value.trim();
-  const resultDiv = document.getElementById("result");
-  if (validCodes.includes(input)) {
-    resultDiv.innerHTML = '<i class="fa-solid fa-check" style="color:green"></i> Valid Code';
-  } else {
-    resultDiv.innerHTML = '<i class="fa-solid fa-x" style="color:red"></i> Invalid Code';
-  }
+async function checkCode() {
+    const input = document.getElementById("codeInput").value.trim();
+    const resultDiv = document.getElementById("result");
+
+    try {
+        const response = await fetch(jsonURL);
+        if (!response.ok) throw new Error("Could not fetch codes");
+        const codes = await response.json(); // array of objects: [{code:"code123", valid:true}, ...]
+
+        const found = codes.find(c => c.code === input);
+
+        if (found) {
+            if (found.valid) {
+                resultDiv.innerHTML = '<i class="fa-solid fa-check" style="color:green"></i> Valid Code';
+            } else {
+                resultDiv.innerHTML = '<i class="fa-solid fa-x" style="color:red"></i> Invalid Code';
+            }
+        } else {
+            resultDiv.innerHTML = '<i class="fa-solid fa-x" style="color:red"></i> Code not found';
+        }
+
+    } catch (err) {
+        resultDiv.innerHTML = '<i class="fa-solid fa-x" style="color:red"></i> Error loading codes';
+        console.error(err);
+    }
 }
 </script>
+
 
 </body>
 </html>
