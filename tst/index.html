@@ -28,11 +28,11 @@
         padding: 15px 40px;
         position: sticky;
         top: 0;
-        z-index: 999;
+        z-index: 1000;
     }
 
     header img {
-        height: 55px;
+        height: 60px;
         object-fit: contain;
     }
 
@@ -81,30 +81,26 @@
         color: #fff !important;
     }
 
-    .partner-btn:hover i {
-        color: white;
-    }
-
     /* HERO */
     .hero {
         text-align: center;
-        padding: 100px 20px;
+        padding: 100px 25px;
     }
 
     .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 10px;
+        font-size: 3.2rem;
+        margin-bottom: 15px;
         font-weight: 900;
     }
 
     .hero p {
-        font-size: 1.3rem;
-        max-width: 700px;
+        font-size: 1.25rem;
+        max-width: 750px;
         margin: 0 auto;
-        opacity: 0.7;
+        opacity: 0.75;
     }
 
-    /* CARD GRID */
+    /* FEATURE CARDS */
     .card-section {
         padding: 70px 40px;
         display: grid;
@@ -115,44 +111,54 @@
     }
 
     .card {
-        background: #ffffff;
-        padding: 35px 25px;
-        border-radius: 20px;
+        background: white;
+        padding: 40px 30px;
+        border-radius: 22px;
         text-align: center;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
         transition: 0.25s ease;
-        transform-style: preserve-3d;
-    }
-
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        transform: translateY(40px);
     }
 
     .card i {
-        font-size: 48px;
+        font-size: 50px;
         color: #ff6b00;
         margin-bottom: 20px;
+        display: block;
     }
 
     .card h3 {
-        font-size: 1.4rem;
-        margin-bottom: 10px;
+        font-size: 1.5rem;
+        margin-bottom: 12px;
         font-weight: 700;
     }
 
     .card p {
         font-size: 1rem;
-        opacity: 0.8;
-        line-height: 1.5;
+        opacity: 0.85;
+        line-height: 1.55;
+    }
+
+    .card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 28px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ANIMATE IN */
+    .show {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        transition: all 0.8s ease-out;
     }
 
     /* FOOTER */
     footer {
         background: #111;
         color: white;
-        padding: 30px 20px;
+        padding: 35px 20px;
         text-align: center;
+        margin-top: 50px;
     }
 
     .footer-icons a {
@@ -164,6 +170,20 @@
 
     .footer-icons a:hover {
         color: #ff6b00;
+    }
+
+    @media (max-width: 800px) {
+        header {
+            padding: 15px 20px;
+        }
+
+        nav a {
+            margin-left: 15px;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+        }
     }
 </style>
 </head>
@@ -187,33 +207,35 @@
 
 <section class="hero">
     <h1>Clean Up RTC</h1>
-    <p>The ultimate Roblox experience where you clean up the chaotic Roblox Twitter Community using a hyperlaser.</p>
+    <p>The ultimate comedic Roblox experience where you purge the chaos of the RTC using a powerful hyperlaser.</p>
 </section>
 
 <section class="card-section" id="features">
+
     <div class="card">
         <i class="fa-solid fa-gun"></i>
         <h3>Hyperlaser Combat</h3>
-        <p>Blast RTC members using the legendary hyperlaser in a fast-paced comedic arena.</p>
+        <p>Take down chaotic RTC members with a high-powered hyperlaser designed for precision and fun.</p>
     </div>
 
     <div class="card">
-        <i class="fa-solid fa-users"></i>
-        <h3>Community Targets</h3>
-        <p>Choose who you want to “clean” from the Roblox Twitter Community.</p>
+        <i class="fa-solid fa-users-line"></i>
+        <h3>Creator-Friendly Target System</h3>
+        <p>Choose your targets from popular RTC figures and create fun content effortlessly.</p>
     </div>
 
     <div class="card">
-        <i class="fa-solid fa-video"></i>
-        <h3>Media Showcase</h3>
-        <p>Watch gameplay clips, screenshots, and creator videos from the community.</p>
+        <i class="fa-solid fa-photo-film"></i>
+        <h3>Media Gallery</h3>
+        <p>Browse videos, screenshots, and community clips from creators around the Roblox community.</p>
     </div>
 
     <div class="card">
         <i class="fa-solid fa-bolt"></i>
-        <h3>Fast-Paced Chaos</h3>
-        <p>A nonstop comedic shooter built for creators, players, and chaos enthusiasts.</p>
+        <h3>Fast-Paced Action</h3>
+        <p>A nonstop chaotic shooter with instant respawns and constant action.</p>
     </div>
+
 </section>
 
 <footer>
@@ -224,6 +246,25 @@
         <a href="#"><i class="fab fa-discord"></i></a>
     </div>
 </footer>
+
+<script>
+    // Scroll Animation
+    const cards = document.querySelectorAll(".card");
+
+    function checkCards() {
+        const trigger = window.innerHeight * 0.85;
+
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            if (cardTop < trigger) {
+                card.classList.add("show");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", checkCards);
+    window.addEventListener("load", checkCards);
+</script>
 
 </body>
 </html>
