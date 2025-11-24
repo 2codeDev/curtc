@@ -39,7 +39,6 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 15px 40px;
-  flex-wrap: wrap;
 }
 
 /* Logo left */
@@ -47,33 +46,7 @@ header {
   height: 60px;
 }
 
-/* Nav links left aligned next to logo */
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  margin-left: 20px;
-  flex-wrap: wrap;
-}
-
-.nav-left a {
-  text-decoration: none;
-  color: #111;
-  font-weight: 600;
-  font-size: 1rem;
-  white-space: nowrap;
-  transition: 0.3s;
-}
-
-.nav-left a:hover {
-  color: #ff6b00;
-}
-
 /* Partner button right */
-.partner-wrapper {
-  flex-shrink: 0;
-}
-
 .partner-btn {
   display: inline-flex;
   align-items: center;
@@ -171,27 +144,13 @@ header {
   box-shadow: 0 20px 28px rgba(0, 0, 0, 0.15);
 }
 
-/* ---------------- MEDIA GRID ---------------- */
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-  margin-top: 40px;
-}
-
-.media-grid img,
-.media-grid video {
-  width: 100%;
-  border-radius: 12px;
-  border: 2px solid #e5e5e5;
-}
-
 /* ---------------- SOCIAL GRID ---------------- */
 .social-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
   margin-top: 40px;
+  padding: 0 40px 70px 40px;
 }
 
 .post {
@@ -237,18 +196,9 @@ footer {
 /* ---------------- MOBILE ---------------- */
 @media (max-width: 850px) {
   .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .nav-left {
-    margin-left: 0;
-    gap: 15px;
-  }
-
-  .partner-wrapper {
-    align-self: flex-end;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px 20px;
   }
 
   .hero h1 {
@@ -261,27 +211,20 @@ footer {
 
 <header>
   <div class="container topbar">
-    <img src="/curtc_logo.png" alt="Clean Up RTC Logo" class="logo">
+    <img src="YOUR_LOGO_HERE.png" alt="Clean Up RTC Logo" class="logo">
 
-    <nav class="nav-left">
-      <a href="#about">About</a>
-      <a href="#features">Features</a>
-      <a href="#media">Media</a>
-      <a href="#social">Social</a>
-    </nav>
-
-    <div class="partner-wrapper">
-      <button class="partner-btn">
-        <i class="fa-solid fa-fire"></i>
-        Partner Program
-      </button>
-    </div>
+    <button class="partner-btn">
+      <i class="fa-solid fa-fire"></i>
+      Partner Program
+    </button>
   </div>
 </header>
 
 <section class="hero">
-  <h1>Clean Up RTC</h1>
-  <p>Use your hyperlaser to decide the fate of the Roblox Twitter Community—chaos and hilarity await.</p>
+  <div class="container">
+    <h1>Clean Up RTC</h1>
+    <p>Use your hyperlaser to decide the fate of the Roblox Twitter Community—chaos and hilarity await.</p>
+  </div>
 </section>
 
 <section class="card-section" id="features">
@@ -298,41 +241,25 @@ footer {
   </div>
 
   <div class="card">
-    <i class="fa-solid fa-photo-film"></i>
-    <h3>Media Gallery</h3>
-    <p>Browse videos, screenshots, and community clips from creators around the Roblox community.</p>
-  </div>
-
-  <div class="card">
     <i class="fa-solid fa-bolt"></i>
     <h3>Fast-Paced Action</h3>
     <p>A nonstop chaotic shooter with instant respawns and constant action.</p>
   </div>
 </section>
 
-<section id="media" class="container">
-  <h2 style="text-align:left;">Media Showcase</h2>
-  <div class="media-grid">
-    <img src="image1.png" alt="">
-    <img src="image2.png" alt="">
-    <video controls src="video1.mp4"></video>
-    <video controls src="video2.mp4"></video>
-  </div>
-</section>
-
 <section id="social" class="container">
   <h2 style="text-align:left;">Social Highlights</h2>
   <div class="social-grid">
-    <div class="post">Example social post screenshot.</div>
-    <div class="post">Community reactions and memes.</div>
-    <div class="post">Creator highlights & more.</div>
+    <div class="post">Embedded post example 1.</div>
+    <div class="post">Embedded post example 2.</div>
+    <div class="post">Embedded post example 3.</div>
   </div>
 </section>
 
 <footer>
   <p>© 2025 Clean Up RTC</p>
   <div class="footer-icons">
-    <a href="#"><i class="fab fa-x-twitter"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
     <a href="#"><i class="fab fa-youtube"></i></a>
     <a href="#"><i class="fab fa-discord"></i></a>
   </div>
