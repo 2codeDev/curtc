@@ -42,15 +42,17 @@ header {
   flex-wrap: wrap;
 }
 
-header img.logo {
+/* Logo left */
+.logo {
   height: 60px;
 }
 
-/* Navigation left aligned */
+/* Nav links left aligned next to logo */
 .nav-left {
   display: flex;
   align-items: center;
   gap: 25px;
+  margin-left: 20px;
   flex-wrap: wrap;
 }
 
@@ -67,7 +69,7 @@ header img.logo {
   color: #ff6b00;
 }
 
-/* Partner button right aligned */
+/* Partner button right */
 .partner-wrapper {
   flex-shrink: 0;
 }
@@ -79,11 +81,13 @@ header img.logo {
   padding: 12px 22px;
   border-radius: 12px;
   font-weight: 700;
-  color: white !important;
+  color: white;
   background: linear-gradient(90deg,#ff8a00,#ff5100);
   box-shadow: 0 4px 12px rgba(255,81,0,0.4);
-  transition: 0.25s ease;
+  border: none;
+  cursor: pointer;
   white-space: nowrap;
+  transition: 0.25s ease;
 }
 
 .partner-btn i {
@@ -94,7 +98,7 @@ header img.logo {
 .partner-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 18px rgba(255,81,0,0.6);
-  color: white !important;
+  color: white;
 }
 
 @keyframes flame {
@@ -163,7 +167,7 @@ header img.logo {
 }
 
 .card:hover {
-  transform: translateY(-12px);
+  transform: translateY(-12px) rotateX(4deg) rotateY(4deg);
   box-shadow: 0 20px 28px rgba(0, 0, 0, 0.15);
 }
 
@@ -233,19 +237,18 @@ footer {
 /* ---------------- MOBILE ---------------- */
 @media (max-width: 850px) {
   .topbar {
-    justify-content: space-between;
-    padding: 15px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   .nav-left {
-    justify-content: flex-start;
+    margin-left: 0;
     gap: 15px;
-    margin-top: 10px;
-    flex-wrap: wrap;
   }
 
   .partner-wrapper {
-    margin-top: 10px;
+    align-self: flex-end;
   }
 
   .hero h1 {
@@ -258,20 +261,20 @@ footer {
 
 <header>
   <div class="container topbar">
-    <img src="/curtc_logo.png" alt="Clean Up RTC Logo" class="logo">
+    <img src="/curtc-logo.png" alt="Clean Up RTC Logo" class="logo">
 
-    <div class="nav-left">
+    <nav class="nav-left">
       <a href="#about">About</a>
       <a href="#features">Features</a>
       <a href="#media">Media</a>
       <a href="#social">Social</a>
-    </div>
+    </nav>
 
     <div class="partner-wrapper">
-      <a class="partner-btn" href="partner.html">
+      <button class="partner-btn">
         <i class="fa-solid fa-fire"></i>
         Partner Program
-      </a>
+      </button>
     </div>
   </div>
 </header>
