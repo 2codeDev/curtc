@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Up RTC | Partner Program</title>
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ---------------- GLOBAL ---------------- */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+.container {
+  width: 90%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* ---------------- HEADER ---------------- */
+header {
+  width: 100%;
+  background: #fff;
+  border-bottom: 2px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+}
+
+.logo {
+  height: 60px;
+}
+
+.partner-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(90deg,#ff8a00,#ff5100);
+  box-shadow: 0 4px 12px rgba(255,81,0,0.4);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.25s ease;
+}
+
+.partner-btn i {
+  animation: flame 1s infinite ease-in-out;
+  color: white;
+}
+
+.partner-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(255,81,0,0.6);
+  color: white;
+}
+
+@keyframes flame {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+  text-align: left;
+  padding: 100px 25px;
+  background: #fafafa;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 900;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 700px;
+  opacity: 0.75;
+}
+
+/* ---------------- PERKS CARDS ---------------- */
+.card-section {
+  padding: 70px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.25s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.card i {
+  font-size: 50px;
+  color: #ff6b00;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.card p {
+  font-size: 1rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.card:hover {
+  transform: translateY(-12px) rotateX(4deg) rotateY(4deg);
+  box-shadow: 0 20px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------------- APPLY BUTTON ---------------- */
+.apply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 14px;
+  background: linear-gradient(90deg,#ff8a00,#ff5100);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 50px auto;
+  text-decoration: none;
+  display: block;
+  max-width: 220px;
+  box-shadow: 0 6px 18px rgba(255,81,0,0.5);
+  transition: 0.25s ease;
+}
+
+.apply-btn i {
+  animation: flame 1s infinite ease-in-out;
+  color: white;
+}
+
+.apply-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(255,81,0,0.6);
+  color: white;
+}
+
+/* ---------------- FOOTER ---------------- */
+footer {
+  background: #111;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.footer-icons a {
+  color: white;
+  margin: 0 10px;
+  font-size: 1.4rem;
+  transition: 0.3s;
+}
+
+.footer-icons a:hover {
+  color: #ff6b00;
+}
+
+/* ---------------- SCROLL ANIMATION ---------------- */
+.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 0.8s ease-out;
+}
+
+/* ---------------- MOBILE ---------------- */
+@media (max-width: 850px) {
+  .topbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container topbar">
+    <a href="/">
+    <img src="/curtc_logo.png" alt="Clean Up RTC Logo" class="logo">
+   </a>
+    <a href="/partner-program/" class="partner-btn">
+    <i class="fa-solid fa-fire"></i>
+    Partner Program
+  </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Partner Program</h1>
+    <p>Join our partner program and unlock special perks for content creators.</p>
+  </div>
+</section>
+
+<section class="card-section">
+  <div class="card">
+    <i class="fa-solid fa-star"></i>
+    <h3>Early Access</h3>
+    <p>Get early access to new features and updates before anyone else.</p>
+  </div>
+
+  <div class="card">
+    <i class="fa-solid fa-bolt"></i>
+    <h3>Exclusive Tools</h3>
+    <p>Receive special in-game tools and hyperlasers to stand out in Clean Up RTC.</p>
+  </div>
+
+  <div class="card">
+    <i class="fa-solid fa-rocket"></i>
+    <h3>Featured Spotlight</h3>
+    <p>Your content may be showcased on our social media.</p>
+  </div>
+</section>
+
+<!-- APPLY BUTTON -->
+<div style="text-align:center;">
+  <a href="https://forms.gle/M6wZ8LxQeePQduHn8" target="_blank" class="apply-btn">
+    <i class="fa-solid fa-fire"></i>
+    Apply Now
+  </a>
+</div>
+
+<footer>
+  <p>© 2025 Clean Up RTC</p>
+  <div class="footer-icons">
+    <a href="https://x.com/cleanuprtc"><i class="fab fa-twitter"></i></a>
+    <a href="https://youtube.com/@cleanuprtc"><i class="fab fa-youtube"></i></a>
+    <a href="https://curtc.co/discord"><i class="fab fa-discord"></i></a>
+  </div>
+</footer>
+
+<script>
+// Scroll animation for cards
+const cards = document.querySelectorAll(".card");
+
+function animateCards() {
+    const trigger = window.innerHeight * 0.85;
+    cards.forEach(card => {
+        const top = card.getBoundingClientRect().top;
+        if(top < trigger){
+            card.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", animateCards);
+window.addEventListener("load", animateCards);
+</script>
+
+</body>
+</html>
