@@ -1,5 +1,6 @@
 [
-  {"code": "code123", "valid": true},
-  {"code": "code124", "valid": false},
-  {"code": "code125", "valid": true}
+  {"code": "GLITCHEDPURPLE", "valid": true},
+  {"code": "OGLASER", "valid": true},
+  {"code": "RGBLASER", "valid": true},
+  {"code": "GLITCHED", "valid": true}
 ]
