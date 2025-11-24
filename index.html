@@ -1,16 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clean Up RTC</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Up RTC</title>
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ---------------- GLOBAL ---------------- */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #111;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 90%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* ---------------- HEADER ---------------- */
+header {
+  width: 100%;
+  background: #fff;
+  border-bottom: 2px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+}
+
+/* Logo left */
+.logo {
+  height: 60px;
+}
+
+/* Partner button right */
+.partner-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(90deg,#ff8a00,#ff5100);
+  box-shadow: 0 4px 12px rgba(255,81,0,0.4);
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.25s ease;
+}
+
+.partner-btn i {
+  animation: flame 1s infinite ease-in-out;
+  color: white;
+}
+
+.partner-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(255,81,0,0.6);
+  color: white;
+}
+
+@keyframes flame {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+  text-align: left;
+  padding: 100px 25px;
+  background: #fafafa;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 900;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 700px;
+  opacity: 0.75;
+}
+
+/* ---------------- FEATURE CARDS ---------------- */
+.card-section {
+  padding: 70px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.25s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.card i {
+  font-size: 50px;
+  color: #ff6b00;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.card p {
+  font-size: 1rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.card:hover {
+  transform: translateY(-12px) rotateX(4deg) rotateY(4deg);
+  box-shadow: 0 20px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------------- SOCIAL GRID ---------------- */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+  padding: 0 40px 70px 40px;
+}
+
+.post {
+  padding: 25px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  transition: .2s;
+}
+
+.post:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+/* ---------------- FOOTER ---------------- */
+footer {
+  background: #111;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.footer-icons a {
+  color: white;
+  margin: 0 10px;
+  font-size: 1.4rem;
+  transition: 0.3s;
+}
+
+.footer-icons a:hover {
+  color: #ff6b00;
+}
+
+/* ---------------- SCROLL ANIMATION ---------------- */
+.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 0.8s ease-out;
+}
+
+/* ---------------- MOBILE ---------------- */
+@media (max-width: 850px) {
+  .topbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <img src="logo.png" alt="Logo" class="logo">
 
-        <h1 class="coming-soon">COMING SOON</h1>
+<header>
+  <div class="container topbar">
+    <a href="/tst/index.html">
+    <img src="/curtc_logo.png" alt="Clean Up RTC Logo" class="logo">
+   </a>
+    <a href="/tst/partner" class="partner-btn">
+    <i class="fa-solid fa-fire"></i>
+    Partner Program
+  </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Clean Up RTC</h1>
+    <p>Use your hyperlaser to decide the fate of RTC members.</p>
+  </div>
+</section>
+
+<section class="card-section" id="features">
+  <div class="card">
+    <i class="fa-solid fa-gun"></i>
+    <h3>Hyperlasers</h3>
+    <p>You can buy different hyperlaser guns or even buy a full customizable one!</p>
+  </div>
+
+  <div class="card">
+    <i class="fa-solid fa-users-line"></i>
+    <h3>Perfect for content</h3>
+    <p>You can make videos cleaning up by avatar or based off their twitter status and more!</p>
+  </div>
+
+  <div class="card">
+    <i class="fa-solid fa-gift"></i>
+    <h3>Redeem Codes</h3>
+    <p>Redeem codes found on our social media pages for custom hyperlaser guns and more!</p>
+  </div>
+</section>
+
+<section id="social" class="container">
+  <h2 style="text-align:left;">Social Highlights</h2>
+  <div class="social-grid">
+    <div class="post">
+      <blockquote class="twitter-tweet"><p lang="en" dir="ltr">👍 Introducing our like goals! <br><br>When we reach our set like goal, we will release a free Hyperlaser Gun for you to be able to obtain.<br><br>Once we release the goal&#39;s Hyperlaser Gun, we will increase the goal further for another Hyperlaser Gun&#39;s release. <a href="https://t.co/XtQIT9qs19">pic.twitter.com/XtQIT9qs19</a></p>&mdash; Clean Up RTC (@CleanUpRTC) <a href="https://twitter.com/CleanUpRTC/status/1847618087404634224?ref_src=twsrc%5Etfw">October 19, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
+    <div class="post">
+      <blockquote class="twitter-tweet"><p lang="en" dir="ltr">✨ NEW CODE: Use code &quot;GLITCHEDPURPLE&quot; for a Glitched Purple Hyperlaser Gun and have it forever in Clean Up RTC!<a href="https://twitter.com/hashtag/Roblox?src=hash&amp;ref_src=twsrc%5Etfw">#Roblox</a> <a href="https://twitter.com/hashtag/CleanUpRTC?src=hash&amp;ref_src=twsrc%5Etfw">#CleanUpRTC</a> <a href="https://twitter.com/hashtag/RTC?src=hash&amp;ref_src=twsrc%5Etfw">#RTC</a> <a href="https://t.co/0I54qLQbqP">pic.twitter.com/0I54qLQbqP</a></p>&mdash; Clean Up RTC (@CleanUpRTC) <a href="https://twitter.com/CleanUpRTC/status/1844337451512545654?ref_src=twsrc%5Etfw">October 10, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="post">
+      <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Just made this donation board for <a href="https://twitter.com/CleanUpRTC?ref_src=twsrc%5Etfw">@CleanUpRTC</a> Character loader was from the original board, but the rest of the functionality was remade. Board is capable of reloading in ~0.25 seconds. <a href="https://t.co/yn6cHBdRjv">pic.twitter.com/yn6cHBdRjv</a></p>&mdash; Dan (@AjaxTiba) <a href="https://twitter.com/AjaxTiba/status/1843974186777325630?ref_src=twsrc%5Etfw">October 9, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Clean Up RTC</p>
+  <div class="footer-icons">
+    <a href="https://x.com/cleanuprtc"><i class="fab fa-twitter"></i></a>
+    <a href="https://youtube.com/@cleanuprtc"><i class="fab fa-youtube"></i></a>
+    <a href="https://curtc.co/discord"><i class="fab fa-discord"></i></a>
+  </div>
+</footer>
+
+<script>
+// Scroll animation for cards
+const cards = document.querySelectorAll(".card");
+
+function animateCards() {
+    const trigger = window.innerHeight * 0.85;
+    cards.forEach(card => {
+        const top = card.getBoundingClientRect().top;
+        if(top < trigger){
+            card.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", animateCards);
+window.addEventListener("load", animateCards);
+</script>
+
 </body>
 </html>
